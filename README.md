@@ -1,4 +1,4 @@
-=misc-cache-attacks
+= misc-cache-attacks
 
 - start the webserver
 
@@ -7,3 +7,9 @@
 - start the attack
 
 ```./client 127.0.0.1 8443```
+
+- display resuts
+
+```python results_to_js.py > display-results/js/data.js```
+
+and open `display-results/index.html` in a browser

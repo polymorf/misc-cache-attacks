@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Résultats</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <script src="./js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./js/canvasjs.min.js"></script>
+        <script type="text/javascript" src="./js/data.js"></script>
+    </head>
+    <body>
+            <h3>Résultats</h3>
+            <script type="text/javascript">
+            $(document).ready(function () {
+                var chart = new CanvasJS.Chart("chartContainer",
+                {
+                    zoomEnabled: true,
+                    panEnabled: true,
+                    showInLegend: true,
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    height: 300,
+                    width: 800,
+                    title:{
+                        text: "Caches hits / misses"
+                    },
+                    legend: {
+                        horizontalAlign: "right",
+                        verticalAlign: "center"
+                    },
+                    axisX:{
+                        title: "Mesures",
+                    },
+                    axisY:{
+                        interval:1,
+                        valueFormatString: " ",
+                    },
+                    toolTip:{
+                        enabled: false
+                    },
+                    data: getdata(),
+
+                });
+
+                chart.render();
+            });
+            </script>
+            <div style="margin: auto; clear: all; height: 300px; width: 800px; border: 1px solid black;">
+                <div id="chartContainer" style="text-align: center;">TODO: Uncomment data.js</div>
+            </div>
+    </body>
+</html>
+
+</html>
