@@ -12,4 +12,6 @@
 
 ```python results_to_js.py > display-results/js/data.js```
 
-and open `display-results/index.html` in a browser
+and open `display-results/index.html` in a browser 
+
+![example](https://github.com/polymorf/misc-cache-attacks/raw/master/display-results/example.png)
